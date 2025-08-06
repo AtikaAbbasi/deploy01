@@ -217,7 +217,7 @@ export const restepasswrd =async (req,res) =>{
 try {
     
 let decodeuser = jwt.verify(token,process.env.JWT_SECRET);
-let userRef = await user.findById(decodeuser.id);
+let userRef = await User.findById(decodeuser.id);
 
 if(!userRef){
     return res.status(404).json({

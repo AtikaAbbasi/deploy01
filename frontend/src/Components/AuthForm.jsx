@@ -36,8 +36,11 @@ setformdata(
 e.preventDefault()
 try {
 
+  console.log('before saving userrrrrrrr');
+  
     const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/auth/signup`, formdata)
 
+    console.log('after saving userrrrrrrr');
 if(data.success){
     console.log(" .....!!!",data);
     setToken(data.token);

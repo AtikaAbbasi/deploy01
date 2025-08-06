@@ -25,4 +25,4 @@ app.get('/', (req , res)=>{
     res.send('hello world')
 })
 
-app.listen(process.env.PORT ,()=> console.log(`server runnin on port 5000`, process.env.PORT))
+app.listen(process.env.PORT ,()=> console.log(`server running on port ---------------`, process.env.PORT))
