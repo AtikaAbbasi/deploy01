@@ -1,4 +1,4 @@
-import user from "../models/User.js";
+import User from "../models/User.js";
 import _sndEmail from "../utils/email.js";
 import { signintoken } from "../utils/token.js";
 import jwt from 'jsonwebtoken'
@@ -18,7 +18,7 @@ export const signup = async (req, res) => {
 
         // =================---check user---=============================>
 
-        const isexist = await user.findOne({ email });
+        const isexist = await User.findOne({ email });
         if (isexist) {
             res.status(200).json({
                 success: false,
@@ -29,7 +29,7 @@ export const signup = async (req, res) => {
         // ===========================>--user creating--==================>
 
 
-        const userRef = await user.create(req.body);
+        const userRef = await User.create(req.body);
         const token = signintoken(userRef);
         res.status(201).json({
             userRef,
@@ -78,7 +78,7 @@ export const loginform = async (req, res) => {
         const { email, password, } = req.body;
 
         //user get  with password
-        const userRef = await user.findOne({ email }).select('+password');
+        const userRef = await User.findOne({ email }).select('+password');
 
         if (!userRef || !(await userRef.checkpassword(password))) {
 
@@ -130,7 +130,7 @@ export let forgetpasswd  = async (req,res)=>{
    // console.log('res from forget passwd');
 
    let {email} = req.body
-   let userRef = await user.findOne({email})
+   let userRef = await User.findOne({email})
   
   if(!userRef) {
     return res.status(404).json({

@@ -62,5 +62,5 @@ userschma.methods.checkpassword = function(simplePassword){
 
 
 // =================--usershcema--=================>
-let user = mongoose.model('user', userschma)
-export default user
+let User = mongoose.model('user', userschma)
+export default User
